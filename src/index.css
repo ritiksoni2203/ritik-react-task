@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+table {
+  font-family: monospace;
+}
+
+.pagination {
+  display: flex;
+  border-radius: 50px;
+    overflow: hidden;
+    background: #f3f2f7;
+}
+
+ .page-item.active {
+  background-color: #c257fe;
+  padding: 8px 16px;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.page-item {
+  font-weight: 500;
+}
+
+.css-1nmdiq5-menu {
+  bottom: 100% !important;
+  top: auto !important;
+}

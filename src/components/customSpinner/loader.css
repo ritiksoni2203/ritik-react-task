@@ -1,0 +1,21 @@
+.LoadingContainer {
+    backdrop-filter: blur(4px);
+    background-color: var(--background-color);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 111111111;
+  }
+  
+.LoadingBox {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    z-index: 11111111111;
+}
+  
+  

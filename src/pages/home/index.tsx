@@ -2,7 +2,7 @@
 import { useState } from "react"
 
 // React Imports
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 
 // ** Third Party Components
@@ -16,19 +16,23 @@ import { useDispatch, useSelector } from "react-redux"
 import { Eye } from "react-feather"
 import { reposList } from "../../redux/github/slice"
 import { AppDispatch } from "../../redux/store"
-import { useAuth0 } from "@auth0/auth0-react"
 export const useAppDispatch: () => AppDispatch = useDispatch
 
-const Clubs = () => {
+const Repository = () => {
   const [perPage, setPerPage] = useState(10)
   const [currentPage, setCurrentPage] = useState(1)
   const dispatch = useAppDispatch();
   const { data, totalCount, loading } = useSelector((store: any) => store.github);
-  const { logout } = useAuth0();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(reposList({ page: 1, limit: 10 }))
-  }, [])
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/login')
+  }
 
   const ColumnHeaders = () => (
     <>
@@ -67,9 +71,6 @@ const Clubs = () => {
           </td>
         </tr>
       ))}
-      <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-      Log Out
-    </button>
     </>
   )
 
@@ -87,9 +88,12 @@ const Clubs = () => {
   return (
     <>
       {loading && <CustomSpinner />}
-      <Card className="overflow-hidden">
-        <CardHeader>
-          <CardTitle tag="h4" className="text-2xl mb-5 font-bold">Repisotory List</CardTitle>
+      <Card className="overflow-hidden container">
+        <CardHeader className="card-header mb-5">
+          <CardTitle tag="h4" className="text-2xl font-bold">Repisotory List</CardTitle>
+          <button className="logout-btn" onClick={handleLogout}>
+            Log Out
+          </button>
         </CardHeader>
         <div className="react-dataTable name-width club-table">
           <CustomTable
@@ -110,4 +114,4 @@ const Clubs = () => {
   )
 }
 
-export default Clubs
+export default Repository

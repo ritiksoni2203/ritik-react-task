@@ -1,16 +1,20 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export function RequireAuth() {
-    const { isAuthenticated, isLoading } = useAuth0();
-    let location = useLocation();
+const ProtectedRoute = ({ element: Component }: any) => {
+    const navigate = useNavigate()
+    const accessToken = localStorage.getItem('access') ? true : false;
 
-    console.log(isAuthenticated);
-    
+    useEffect(() => {
+        !accessToken && navigate('/login')
+    }, [])
 
-    if (!isAuthenticated) {
-        return <Navigate to="/login" state={{ from: location }} />;
-    }
+    return (
+        accessToken &&
+        <div>
+            <Component />
+        </div>
+    );
+};
 
-    return <Outlet />;
-}
+export default ProtectedRoute;

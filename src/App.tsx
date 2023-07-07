@@ -10,11 +10,22 @@ import { useEffect } from 'react'
 
 function App() {
   const navigate = useNavigate();
-  const token = localStorage.getItem('access') ? true : false;
 
   useEffect(() => {
-    !token ? navigate('/login') : navigate('/repos')
-  }, []);
+    const checkUserLoggedIn = () => {
+      // Check if the user is logged in
+      const isLoggedIn = localStorage.getItem('access') ? true : false;
+      const currentPath = window.location.pathname;
+
+      if (isLoggedIn && (currentPath === '/login' || currentPath === '/')) {
+        navigate('/repos');
+      } else if (!isLoggedIn && currentPath !== '/login') {
+        navigate('/login'); 
+      }
+    };
+
+    checkUserLoggedIn();
+  }, [navigate]);
 
   return (
     <Routes>

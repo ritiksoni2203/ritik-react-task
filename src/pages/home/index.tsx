@@ -122,7 +122,7 @@ const Repository = () => {
           </button>
         </CardHeader>
         <div className="react-dataTable name-width club-table">
-          <div className="filter-options flex justify-between mb-5 items-center">
+          <div className="filter-options flex flex-wrap justify-between mb-5 items-center">
             <Select
               className="filter-select w-[200px]"
               placeholder="Language"

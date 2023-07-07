@@ -30,7 +30,7 @@ const CustomTable = (props: any) => {
         )}
 
       </div>
-      <div className="table-responsive shadow-[0_0_22px_-8px_rgba(0,0,0,0.3)] rounded-xl overflow-hidden data-table">
+      <div className="table-responsive shadow-[0_0_22px_-8px_rgba(0,0,0,0.3)] rounded-xl overflow-scroll data-table">
         <table className="table table-auto w-full items-center mb-0 table-striped">
           {/* column headers */}
           <thead className="table-head bg-slate-200">

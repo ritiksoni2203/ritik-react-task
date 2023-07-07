@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { Button, Col, Row } from "reactstrap"
+import { Col, Row } from "reactstrap"
 import Pagination from "react-js-pagination";
 import Select from "react-select";
 
@@ -29,30 +29,6 @@ const CustomTable = (props: any) => {
           ""
         )}
 
-        {props?.isSearch ? (
-          <div className="search-box me-2 d-inline-block">
-            <div className="table-search">
-              <i className="bx bx-search-alt search-icon" />
-              <input
-                placeholder="Search"
-                className="form-control"
-                onChange={(e) => {
-                  setTimeout(() => props.getSearchValue(e.target.value), 1000)
-                }}
-              />
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
-        {props?.isButton ? (
-          <Button color="info" onClick={props.clickOnButton}>
-            {props?.isButton}
-          </Button>
-        ) : (
-          ""
-        )}
-        {props?.isField ? <div>{props?.field}</div> : ""}
       </div>
       <div className="table-responsive shadow-[0_0_22px_-8px_rgba(0,0,0,0.3)] rounded-xl overflow-hidden data-table">
         <table className="table table-auto w-full items-center mb-0 table-striped">
@@ -85,7 +61,7 @@ const CustomTable = (props: any) => {
               <Pagination
                 hideFirstLastPages={true}
                 activePage={props?.pageNumber}
-                totalItemsCount={props?.totalCount}
+                totalItemsCount={props?.totalCount ?? 0}
                 itemsCountPerPage={props?.perPage}
                 pageRangeDisplayed={5}
                 itemClass="page-item font-bold py-2 px-4 rounded"

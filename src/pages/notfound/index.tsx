@@ -1,41 +1,31 @@
+import { Link } from "react-router-dom";
+
 const NotFound = () => {
   return (
-    <div className="not-found" style={styles.container}>
-      <h1 style={styles.heading}>404 - Page Not Found</h1>
-      <p style={styles.message}>Oops! The page you are looking for does not exist.</p>
-      <img src="/path/to/error-image.png" alt="Error" style={styles.image} />
-      <button style={styles.button} onClick={() => window.history.back()}>Go Back</button>
-    </div>
-  );
-};
+    <section className="page_404">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12 ">
+            <div className="col-sm-10 col-sm-offset-1  text-center">
+              <div className="four_zero_four_bg">
+                <h1 className="text-center ">404</h1>
+              </div>
 
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    textAlign: 'center',
-    marginTop: '20vh',
-  },
-  heading: {
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    marginBottom: '1rem',
-  },
-  message: {
-    fontSize: '1.2rem',
-    marginBottom: '2rem',
-  },
-  image: {
-    width: '300px',
-    marginBottom: '2rem',
-  },
-  button: {
-    padding: '0.75rem 1.5rem',
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  },
+              <div className="contant_box_404">
+                <h3 className="h2">
+                  Look like you're lost
+                </h3>
+
+                <p>the page you are looking for not avaible!</p>
+
+                <Link to="/repos" className="link_404">Go to Home</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default NotFound;
